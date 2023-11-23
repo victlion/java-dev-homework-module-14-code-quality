@@ -1,7 +1,7 @@
 package writer;
 
 public class PrintMassage {
-    private final String WIN = "You won the game!\nCreated by Shreyas Saha. Thanks for playing!";
+    private final String WIN = "You won the game!\nCreated by Shreyas Saha. Thanks for playing!\nPress n to exit";
     private final String LOST = "You lost the game!\nCreated by Shreyas Saha. Thanks for playing!";
     private final String DRAW = "It's a draw!\nCreated by Shreyas Saha. Thanks for playing!";
     private final String ENTER_NUMBER = "Enter box number to select. Enjoy!\n";

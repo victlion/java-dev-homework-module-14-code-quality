@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Core {
     PrintMassage printMassage = new PrintMassage();
+    Validate validate = new Validate();
     private char[] box = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private byte count;
     private boolean boxEmpty = false;
@@ -15,7 +16,6 @@ public class Core {
     public void startApp() {
         boolean boxAvailable;
         printMassage.printStartMsg();
-
         while (true) {
             printMassage.printBox(box);
             if (!boxEmpty) {
@@ -23,7 +23,7 @@ public class Core {
                 boxEmpty = true;
             }
             printMassage.printWinnerStatus(winnerStatus);
-            validateInputPlayer();
+            validate.validateInputPlayer(box);
             if (isWinnerX()) {
                 restartGame((byte) 1);
                 continue;
@@ -37,26 +37,6 @@ public class Core {
             if (isWinnerY()) {
                 restartGame((byte) 2);
             }
-        }
-    }
-
-    private void validateInputPlayer() {
-        int inputValuePlayer = 0;
-        while (true) {
-            try {
-                Scanner scan = new Scanner(System.in);
-                inputValuePlayer = Integer.parseInt(scan.nextLine());
-            } catch (NumberFormatException ex) {
-            }
-            if (inputValuePlayer > 0 && inputValuePlayer < 10) {
-                if (box[inputValuePlayer - 1] == 'X' || box[inputValuePlayer - 1] == 'O')
-                    printMassage.printEnterAnotherMsg();
-                else {
-                    box[inputValuePlayer - 1] = 'X';
-                    break;
-                }
-            } else
-                printMassage.printInvalidInputMsg();
         }
     }
 
@@ -107,4 +87,5 @@ public class Core {
         boxEmpty = false;
         printMassage.printWinnerStatus(status);
     }
+
 }
